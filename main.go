@@ -18,6 +18,8 @@ func foo(res http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	http.Handle("/css/", http.StripPrefix("/css", http.FileServer(http.Dir("css"))))
+	http.Handle("/images/", http.StripPrefix("/images", http.FileServer(http.Dir("images"))))
 	http.HandleFunc("/page/", foo)
 	http.ListenAndServe(":8080", nil)
 }
