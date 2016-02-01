@@ -2,13 +2,11 @@ package main
 
 import (
 	"html/template"
-	"io"
 	"log"
 	"net/http"
 )
 
 func foo(res http.ResponseWriter, req *http.Request) {
-	io.WriteString(res, "Foo ran")
 	tpl, err := template.ParseFiles("index.html")
 	if err != nil {
 		log.Fatalln(err)
